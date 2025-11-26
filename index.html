@@ -215,12 +215,15 @@
             transition: transform var(--transition-smooth);
         }
         
-        .nav-links a:hover {
+        /* Scroll Spy Active State */
+        .nav-links a:hover, 
+        .nav-links a.active {
             color: var(--cyan-deep);
             background: var(--cyan-glow);
         }
         
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             transform: scaleX(1);
         }
         
@@ -715,10 +718,15 @@
             margin-bottom: 1rem;
         }
         
-        .project-content p {
-            color: var(--text-secondary);
-            line-height: 1.7;
+        .project-list {
             margin-bottom: 1.5rem;
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        .project-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
         }
         
         .project-tags {
@@ -1142,7 +1150,7 @@
                 <div class="skill-card">
                     <div class="skill-icon">
                         <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
+                            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
                         </svg>
                     </div>
                     <h3>Engineering & CAD</h3>
@@ -1204,11 +1212,11 @@
                     <div class="project-content">
                         <h3>RC Car Engineering Optimization</h3>
                         <div class="project-meta">2025–2026 • Team Project</div>
-                        <p>
-                            Leading mechanical design modifications on a 1:10 scale RC car. Designing custom 3D-printed components in SolidWorks, 
-                            analyzing suspension geometry to optimize handling characteristics, and implementing performance upgrades. 
-                            Goal: Reduce lap times by 15% through improved weight distribution and suspension tuning.
-                        </p>
+                        <ul class="project-list">
+                            <li>Leading mechanical design modifications on a 1:10 scale RC car.</li>
+                            <li>Designed custom 3D-printed components in SolidWorks and analyzed suspension geometry.</li>
+                            <li>Goal: Reduce lap times by 15% through improved weight distribution and suspension tuning.</li>
+                        </ul>
                         <div class="project-tags">
                             <span class="tag">SolidWorks</span>
                             <span class="tag">3D Printing</span>
@@ -1225,10 +1233,11 @@
                     <div class="project-content">
                         <h3>Chain Lock Slider Replacement</h3>
                         <div class="project-meta">2024 • Independent Design</div>
-                        <p>
-                            Designed and manufactured a precision steel replacement part from concept to completion. Created detailed CAD models with proper GD&T callouts, 
-                            machined the component on a manual lathe achieving ±0.002" tolerance on critical dimensions, and produced full engineering drawings to verify dimensional accuracy and fit.
-                        </p>
+                        <ul class="project-list">
+                            <li>Designed and manufactured a precision steel replacement part from concept to completion.</li>
+                            <li>Modeled component in SolidWorks with proper GD&T callouts and created engineering drawings.</li>
+                            <li>Machined the component on a manual lathe achieving ±0.002" tolerance on critical dimensions.</li>
+                        </ul>
                         <div class="project-tags">
                             <span class="tag">Manual Lathe</span>
                             <span class="tag">GD&T</span>
@@ -1245,10 +1254,11 @@
                     <div class="project-content">
                         <h3>Fluid Systems Maintenance Study</h3>
                         <div class="project-meta">2021–2023 • Personal Research</div>
-                        <p>
-                            Self-directed exploration of pool pump and chemical feed systems. Gained practical understanding of centrifugal pump operation, 
-                            fluid dynamics principles, pressure regulation, and mechanical system maintenance while ensuring safety compliance with chemical handling procedures.
-                        </p>
+                        <ul class="project-list">
+                            <li>Self-directed exploration of pool pump and chemical feed systems.</li>
+                            <li>Gained practical understanding of centrifugal pump operation, fluid dynamics, and pressure regulation.</li>
+                            <li>Ensured safety compliance with chemical handling procedures during maintenance.</li>
+                        </ul>
                         <div class="project-tags">
                             <span class="tag">Fluid Mechanics</span>
                             <span class="tag">System Maintenance</span>
@@ -1384,7 +1394,7 @@
                             </svg>
                         </div>
                         <div class="contact-label">LinkedIn</div>
-                        <div class="contact-value">/in/benjamindunham</div>
+                        <div class="contact-value">/in/benjamin-r-dunham</div>
                     </a>
                 </div>
             </div>
@@ -1453,6 +1463,33 @@
                         top: offsetTop,
                         behavior: 'smooth'
                     });
+                }
+            });
+        });
+
+        // Scroll Spy Logic
+        const sections = document.querySelectorAll('section');
+        const navMenuItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // 120px offset triggers the highlight slightly before the section hits the top
+                if (window.scrollY >= (sectionTop - 120)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navMenuItems.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    // Only add active class if we have a valid current section
+                    if(current !== '') {
+                        a.classList.add('active');
+                    }
                 }
             });
         });
