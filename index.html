@@ -19,27 +19,6 @@
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🔧</text></svg>">
     
-    <meta property="og:title" content="Benjamin Dunham - Mechanical Engineering Student" />
-    <meta property="og:description" content="4.0 GPA • SolidWorks CSWA • Hands-on machining & manufacturing • Seeking 2026 internships" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://benjamindunham.github.io/" />
-    <meta property="og:image" content="https://benjamindunham.github.io/og-image.jpg" />
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Benjamin Dunham",
-      "jobTitle": "Mechanical Engineering Student",
-      "url": "https://benjamindunham.github.io",
-      "email": "mailto:bdunha13@gmail.com",
-      "telephone": "+12202215277",
-      "address": {"@type": "PostalAddress", "addressLocality": "Dayton", "addressRegion": "OH"},
-      "alumniOf": {"@type": "CollegeOrUniversity", "name": "Sinclair Community College"},
-      "sameAs": ["https://www.linkedin.com/in/benjamin-r-dunham/"]
-    }
-    </script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
@@ -205,10 +184,28 @@
             position: relative;
         }
         
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0.25rem;
+            left: 1rem;
+            right: 1rem;
+            height: 2px;
+            background: var(--accent-primary);
+            transform: scaleX(0);
+            transition: transform var(--transition-smooth);
+        }
+        
+        /* Scroll Spy Active State */
         .nav-links a:hover, 
         .nav-links a.active {
             color: var(--accent-primary);
             background: var(--accent-glow);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
         }
         
         .theme-toggle {
@@ -621,6 +618,14 @@
             font-size: 1.75rem;
             margin-bottom: 1rem;
             color: var(--accent-primary);
+            width: 48px;
+            height: 48px;
+        }
+        
+        .skill-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         .skill-card h3 {
@@ -703,7 +708,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
         
         .project-card:hover .project-visual img {
@@ -879,10 +884,21 @@
             box-shadow: var(--shadow-medium);
         }
         
+        /* Education Logo Styling */
+        .edu-logo {
+            height: 40px;
+            width: auto;
+            margin-right: 12px;
+            vertical-align: middle;
+            border-radius: 4px;
+        }
+        
         .education-card h3 {
             font-size: 1.5rem;
             color: var(--text-primary);
             margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
         }
         
         .education-degree {
@@ -905,23 +921,21 @@
             font-size: 0.95rem;
         }
         
-        /* Contact Section */
+        /* Contact Section - Cinematic Background */
         #contact {
-            background: var(--white);
+            position: relative;
+            /* Dark overlay + Parallax Image */
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('dayton_skyline.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             border-top: 1px solid var(--mist);
+            color: white; /* Force all text white */
         }
         
-        #contact .section-label {
-            color: var(--accent-primary);
-        }
-        
-        #contact .section-title {
-            color: var(--text-primary);
-        }
-        
-        #contact .section-description {
-            color: var(--text-secondary);
-        }
+        #contact .section-label { color: var(--accent-light); }
+        #contact .section-title { color: white; }
+        #contact .section-description { color: #cbd5e1; }
         
         .contact-content {
             max-width: 800px;
@@ -937,12 +951,13 @@
         }
         
         .contact-card {
-            background: var(--cloud);
-            border: 1px solid var(--mist);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: var(--radius-lg);
             padding: 1.75rem;
             text-decoration: none;
-            color: var(--text-primary);
+            color: white;
             transition: all var(--transition-smooth);
             display: flex;
             flex-direction: column;
@@ -951,15 +966,15 @@
         }
         
         .contact-card:hover {
-            background: var(--white);
-            border-color: var(--accent-primary);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: white;
             transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         .contact-icon {
             font-size: 1.75rem;
-            color: var(--accent-primary);
+            color: var(--accent-light);
         }
         
         .contact-label {
@@ -967,13 +982,13 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.7);
         }
         
         .contact-value {
             font-size: 1.05rem;
             font-weight: 600;
-            color: var(--text-primary);
+            color: white;
         }
         
         /* Footer */
@@ -1107,7 +1122,7 @@
                     <span class="highlight">Practical Application</span>
                 </h1>
                 <p class="hero-description">
-                    I’m Ben Dunham, a Mechanical Engineering Technology student at Sinclair Community College with a 4.0 GPA and a drive to solve complex problems. 
+                    I’m Ben Dunham—a Mechanical Engineering Technology student at Sinclair Community College with a 4.0 GPA and a drive to solve complex problems. 
                     <br><br>
                     My passion lies in understanding how things work, taking them apart, and making them better. From reverse-engineering broken parts to mastering SolidWorks, I am a rapid learner who combines academic excellence with hands-on machining skills. I don't just design; I build, test, and refine.
                 </p>
@@ -1179,9 +1194,7 @@
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94L14.4 2.81c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/>
-                        </svg>
+                        <img src="solidworks_logo2.png.png" alt="SolidWorks" style="width: 100%; height: 100%; object-fit: contain;">
                     </div>
                     <h3>Engineering & CAD</h3>
                     <div class="skill-list">
@@ -1237,7 +1250,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-visual">
-                        <img src="rc-car.png.png" alt="RC Car Chassis">
+                        <img src="rc-car.png.png" alt="RC Car Chassis" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <h3>RC Car Engineering Optimization</h3>
@@ -1258,7 +1271,7 @@
 
                 <div class="project-card">
                     <div class="project-visual">
-                         <img src="chain-lock.jpg.png" alt="Chain Lock CAD Design">
+                         <img src="chain-lock.jpg.png" alt="Chain Lock CAD Design" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <h3>Chain Lock Slider Replacement</h3>
@@ -1279,7 +1292,7 @@
 
                 <div class="project-card">
                     <div class="project-visual">
-                         <img src="pool-pump.jpg" alt="Fluid Systems Maintenance">
+                         <img src="pool-pump.jpg" alt="Fluid Systems Maintenance" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="project-content">
                         <h3>Fluid Systems Maintenance Study</h3>
@@ -1363,7 +1376,7 @@
             </div>
             <div class="education-grid">
                 <div class="education-card">
-                    <h3>Sinclair Community College</h3>
+                    <h3><img src="sinclair_logo.jpg" alt="Sinclair Logo" class="edu-logo"> Sinclair Community College</h3>
                     <div class="education-degree">Associate of Applied Science in Mechanical Engineering</div>
                     <div class="education-date">Expected May 2026 | Dayton, OH</div>
                     <div class="education-details">
@@ -1374,7 +1387,7 @@
                 </div>
 
                 <div class="education-card">
-                    <h3>Pleasant High School</h3>
+                    <h3><img src="grad_cap.jpg" alt="HS" class="edu-logo"> Pleasant High School</h3>
                     <div class="education-degree">High School Diploma</div>
                     <div class="education-date">2019 – 2023 | Marion, OH</div>
                     <div class="education-details">
