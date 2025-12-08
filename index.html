@@ -57,20 +57,24 @@
             --text-secondary: #475569;
             --text-muted: #64748b;
             
-            /* New Accent Colors - Royal Blue & Steel (Less Neon) */
-            --accent-primary: #2563eb; /* Royal Blue */
-            --accent-dark: #1e40af;    /* Darker Blue */
-            --accent-light: #60a5fa;   /* Lighter Blue */
-            --accent-glow: rgba(37, 99, 235, 0.1);
+            /* Accent Colors - Royal Blue & Steel */
+            --accent-primary: #2563eb; 
+            --accent-dark: #1e40af;    
+            --accent-light: #60a5fa;   
+            --accent-glow: rgba(37, 99, 235, 0.08);
             
+            /* Status Colors */
+            --success-bg: #ecfdf5;
+            --success-text: #047857;
+            --success-dot: #10b981;
+
             --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.05);
             --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-strong: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-glow: 0 0 15px rgba(37, 99, 235, 0.15);
+            --shadow-strong: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             
             --radius-sm: 6px;
             --radius-md: 8px;
-            --radius-lg: 12px;
+            --radius-lg: 16px;
             
             --transition-quick: 150ms ease-out;
             --transition-smooth: 300ms ease-out;
@@ -92,6 +96,9 @@
             --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.5);
             --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.6);
             --shadow-strong: 0 12px 32px rgba(0, 0, 0, 0.7);
+            
+            --success-bg: rgba(6, 78, 59, 0.5);
+            --success-text: #6ee7b7;
         }
         
         /* Reset & Base */
@@ -117,29 +124,31 @@
         
         ::selection {
             background: var(--accent-glow);
-            color: var(--text-primary);
+            color: var(--accent-primary);
         }
         
-        /* Navigation */
+        /* Navigation - Enhanced UI */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--mist);
+            background: rgba(255, 255, 255, 0.85); /* Increased transparency */
+            backdrop-filter: blur(12px) saturate(110%); /* Stronger blur */
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
             transition: all var(--transition-smooth);
-            height: 70px; /* Fixed height for consistency */
+            height: 72px; 
         }
         
         [data-theme="dark"] nav {
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom-color: rgba(51, 65, 85, 0.4);
         }
         
         nav.scrolled {
-            box-shadow: var(--shadow-subtle);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            background: rgba(255, 255, 255, 0.95);
         }
         
         .nav-container {
@@ -154,11 +163,24 @@
         
         .nav-brand {
             font-weight: 700;
-            font-size: 1.35rem;
+            font-size: 1.2rem;
             color: var(--text-primary);
             text-decoration: none;
             transition: var(--transition-quick);
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Added a small accent block to title for "Advanced" feel */
+        .nav-brand::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--accent-primary);
+            border-radius: 2px;
         }
         
         .nav-brand:hover {
@@ -167,7 +189,7 @@
         
         .nav-links {
             display: flex;
-            gap: 0.25rem;
+            gap: 0.5rem;
             list-style: none;
             align-items: center;
         }
@@ -183,7 +205,6 @@
             position: relative;
         }
         
-        /* Removed the underline effect for a cleaner button-like hover */
         .nav-links a:hover, 
         .nav-links a.active {
             color: var(--accent-primary);
@@ -208,7 +229,7 @@
         .theme-toggle:hover {
             background: var(--accent-glow);
             color: var(--accent-primary);
-            border-color: var(--accent-primary);
+            border-color: var(--accent-glow);
         }
         
         .mobile-menu-btn {
@@ -232,14 +253,15 @@
             color: var(--accent-primary);
         }
         
-        /* Hero Section - Reduced Deadspace */
+        /* Hero Section */
         .hero {
-            min-height: 90vh; /* Reduced from 100vh */
+            min-height: 92vh; 
             display: flex;
             align-items: center;
-            padding: 6rem 2rem 3rem; /* Reduced top padding */
+            padding: 6rem 2rem 4rem; 
             background: 
-                radial-gradient(circle at 15% 50%, var(--accent-glow) 0%, transparent 25%),
+                radial-gradient(circle at 10% 20%, var(--accent-glow) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, var(--accent-glow) 0%, transparent 20%),
                 var(--white);
             position: relative;
             overflow: hidden;
@@ -247,7 +269,7 @@
         
         [data-theme="dark"] .hero {
             background: 
-                radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 20%),
                 var(--white);
         }
         
@@ -256,8 +278,8 @@
             margin: 0 auto;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 2.5rem; /* Reduced from 4rem */
+            grid-template-columns: 1.1fr 1fr; /* Adjusted ratio for bigger card */
+            gap: 4rem; 
             align-items: center;
             position: relative;
             z-index: 1;
@@ -274,23 +296,23 @@
         
         .hero-label {
             display: inline-block;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--accent-primary);
-            margin-bottom: 0.75rem;
-            padding: 0.35rem 0.75rem;
+            margin-bottom: 1rem;
+            padding: 0.4rem 0.8rem;
             background: var(--accent-glow);
             border-radius: var(--radius-sm);
             animation: fadeInUp 0.8s ease-out 0.2s both;
         }
         
         .hero h1 {
-            font-size: 3.25rem; /* Slightly smaller for cleaner look */
+            font-size: 3.5rem; 
             font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
             color: var(--text-primary);
             letter-spacing: -0.03em;
             animation: fadeInUp 0.8s ease-out 0.3s both;
@@ -302,29 +324,21 @@
             -webkit-text-fill-color: initial;
         }
         
-        .hero-tagline {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            font-style: italic;
-            animation: fadeInUp 0.8s ease-out 0.35s both;
-        }
-        
         .hero-description {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             line-height: 1.7;
             color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 580px;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
             animation: fadeInUp 0.8s ease-out 0.4s both;
         }
         
         .hero-stats {
             display: flex;
-            gap: 2.5rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
             animation: fadeInUp 0.8s ease-out 0.5s both;
-            padding-bottom: 1rem;
+            padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--mist);
         }
         
@@ -334,7 +348,7 @@
         }
         
         .stat-value {
-            font-size: 1.75rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--text-primary);
             line-height: 1;
@@ -351,7 +365,7 @@
         
         .hero-actions {
             display: flex;
-            gap: 0.75rem;
+            gap: 1rem;
             flex-wrap: wrap;
             animation: fadeInUp 0.8s ease-out 0.6s both;
         }
@@ -360,10 +374,10 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.85rem 1.5rem;
+            padding: 0.9rem 1.75rem;
             border-radius: var(--radius-md);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             text-decoration: none;
             transition: all var(--transition-quick);
             cursor: pointer;
@@ -379,7 +393,7 @@
         
         .btn-primary:hover {
             background: var(--accent-dark);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-strong);
         }
         
@@ -396,6 +410,7 @@
             background: var(--cloud);
         }
         
+        /* Top Tier Profile Card UI */
         .hero-visual {
             display: flex;
             justify-content: center;
@@ -404,42 +419,50 @@
         }
         
         .profile-card {
-            width: 300px; /* Slightly smaller */
-            height: 380px;
+            width: 360px; /* Bigger width */
             background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-strong);
+            border-radius: 20px; /* Smoother corners */
+            padding: 3rem 2rem;
+            box-shadow: 
+                0 0 0 1px rgba(0,0,0,0.03),
+                0 20px 40px -10px rgba(0,0,0,0.1); /* Deep, soft shadow */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 1.25rem;
+            gap: 1.5rem;
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--mist);
+            transition: transform 0.3s ease;
         }
         
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Subtle top gradient instead of hard block */
         .profile-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 120px;
-            background: var(--accent-primary);
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-light));
         }
         
         .profile-image {
-            width: 160px;
-            height: 160px;
+            width: 180px; /* Bigger image */
+            height: 180px;
             border-radius: 50%;
             background: var(--cloud);
-            border: 4px solid var(--white);
+            /* Add a subtle ring offset */
+            outline: 4px solid var(--white);
+            border: 1px solid var(--mist); 
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
+            font-size: 4rem;
             color: var(--text-muted);
             position: relative;
             z-index: 1;
@@ -450,22 +473,68 @@
             text-align: center;
             position: relative;
             z-index: 1;
+            width: 100%;
         }
         
         .profile-info h3 {
-            font-size: 1.35rem;
-            margin-bottom: 0.35rem;
+            font-size: 1.75rem; /* Larger Name */
+            margin-bottom: 0.25rem;
             color: var(--text-primary);
+            font-weight: 800;
+            letter-spacing: -0.02em;
         }
         
         .profile-info p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
         
-        /* Section Base - Compacted */
+        /* Purposeful Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--success-bg);
+            border-radius: 999px;
+            color: var(--success-text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success-dot);
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        /* Pulsing effect for the dot */
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: var(--success-dot);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        
+        /* Section Base */
         section {
-            padding: 4rem 2rem; /* Reduced from 6rem */
+            padding: 4rem 2rem; 
         }
         
         .section-container {
@@ -475,7 +544,7 @@
         
         .section-header {
             text-align: center;
-            margin-bottom: 2.5rem; /* Reduced from 4rem */
+            margin-bottom: 3rem; 
         }
         
         .section-label {
@@ -511,7 +580,7 @@
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem; /* Reduced gap */
+            gap: 1.5rem; 
         }
         
         .skill-card {
@@ -619,7 +688,7 @@
         }
         
         .project-visual {
-            height: 180px;
+            height: 200px;
             background: var(--slate);
             display: flex;
             align-items: center;
@@ -628,6 +697,17 @@
             color: white;
             position: relative;
             overflow: hidden;
+        }
+        
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-visual img {
+            transform: scale(1.05);
         }
         
         .project-content {
@@ -719,7 +799,7 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2.35rem; /* Adjusted for narrower line padding */
+            left: -2.35rem; 
             top: 0.5rem;
             width: 14px;
             height: 14px;
@@ -917,7 +997,7 @@
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 70px;
+                top: 72px;
                 left: 0;
                 right: 0;
                 background: var(--white);
@@ -1024,13 +1104,12 @@
             <div class="hero-content">
                 <div class="hero-label">Mechanical Engineering Student</div>
                 <h1>
-                    Building precision <br>
-                    <span class="highlight">from concept to reality</span>
+                    Designing for <br>
+                    <span class="highlight">Manufacturability</span>
                 </h1>
-                <p class="hero-tagline">I design it in SolidWorks. I machine it on a lathe. I make sure it works.</p>
                 <p class="hero-description">
-                    Detail-oriented engineering student at Sinclair Community College, bridging the gap between digital CAD design and physical manufacturing. 
-                    I turn technical drawings into machined parts, and complex problems into elegant solutions.
+                    Bridging the gap between digital CAD modeling and physical manufacturing. 
+                    I combine advanced design skills with hands-on fabrication expertise to create functional, high-precision engineering solutions.
                 </p>
                 <div class="hero-stats">
                     <div class="stat">
@@ -1078,7 +1157,10 @@
                     <div class="profile-info">
                         <h3>Benjamin Dunham</h3>
                         <p>📍 Dayton, OH</p>
-                        <p style="margin-top: 0.5rem; font-weight: 600; color: var(--accent-primary);">Available for 2026 internships</p>
+                    </div>
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        Available for 2026 Internships
                     </div>
                 </div>
             </div>
@@ -1169,7 +1251,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-visual">
-                        <img src="rc-car.png.png" alt="RC Car Chassis" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="rc-car.png.png" alt="RC Car Chassis">
                     </div>
                     <div class="project-content">
                         <h3>RC Car Engineering Optimization</h3>
@@ -1190,7 +1272,7 @@
 
                 <div class="project-card">
                     <div class="project-visual">
-                         <img src="chain-lock.jpg.png" alt="Chain Lock CAD Design" style="width: 100%; height: 100%; object-fit: cover;">
+                         <img src="chain-lock.jpg.png" alt="Chain Lock CAD Design">
                     </div>
                     <div class="project-content">
                         <h3>Chain Lock Slider Replacement</h3>
@@ -1211,7 +1293,7 @@
 
                 <div class="project-card">
                     <div class="project-visual">
-                         <img src="pool-pump.jpg" alt="Fluid Systems Maintenance" style="width: 100%; height: 100%; object-fit: cover;">
+                         <img src="pool-pump.jpg" alt="Fluid Systems Maintenance">
                     </div>
                     <div class="project-content">
                         <h3>Fluid Systems Maintenance Study</h3>
