@@ -48,6 +48,11 @@
             --success-text: #047857;
             --success-dot: #10b981;
 
+            /* In Progress Colors */
+            --inprogress-bg: rgba(251, 191, 36, 0.15);
+            --inprogress-text: #b45309;
+            --inprogress-dot: #f59e0b;
+
             --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.05);
             --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-strong: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
@@ -79,6 +84,9 @@
             
             --success-bg: rgba(6, 78, 59, 0.5);
             --success-text: #6ee7b7;
+
+            --inprogress-bg: rgba(180, 83, 9, 0.3);
+            --inprogress-text: #fbbf24;
         }
         
         /* Reset & Base */
@@ -153,7 +161,6 @@
             gap: 0.5rem;
         }
         
-        /* Added a small accent block to title for "Advanced" feel */
         .nav-brand::before {
             content: '';
             display: block;
@@ -276,7 +283,7 @@
             margin: 0 auto;
             width: 100%;
             display: grid;
-            grid-template-columns: 1.1fr 1fr; /* Adjusted ratio for bigger card */
+            grid-template-columns: 1.1fr 1fr;
             gap: 4rem; 
             align-items: center;
             position: relative;
@@ -417,13 +424,13 @@
         }
         
         .profile-card {
-            width: 360px; /* Bigger width */
+            width: 360px;
             background: var(--white);
-            border-radius: 20px; /* Smoother corners */
+            border-radius: 20px;
             padding: 3rem 2rem;
             box-shadow: 
                 0 0 0 1px rgba(0,0,0,0.03),
-                0 20px 40px -10px rgba(0,0,0,0.1); /* Deep, soft shadow */
+                0 20px 40px -10px rgba(0,0,0,0.1); 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -438,7 +445,7 @@
             transform: translateY(-5px);
         }
         
-        /* Subtle top gradient instead of hard block */
+        /* Subtle top gradient */
         .profile-card::before {
             content: '';
             position: absolute;
@@ -450,11 +457,10 @@
         }
         
         .profile-image {
-            width: 180px; /* Bigger image */
+            width: 180px;
             height: 180px;
             border-radius: 50%;
             background: var(--cloud);
-            /* Add a subtle ring offset */
             outline: 4px solid var(--white);
             border: 1px solid var(--mist); 
             display: flex;
@@ -475,7 +481,7 @@
         }
         
         .profile-info h3 {
-            font-size: 1.75rem; /* Larger Name */
+            font-size: 1.75rem; 
             margin-bottom: 0.25rem;
             color: var(--text-primary);
             font-weight: 800;
@@ -510,7 +516,6 @@
             position: relative;
         }
         
-        /* Pulsing effect for the dot */
         .status-dot::after {
             content: '';
             position: absolute;
@@ -669,42 +674,82 @@
             background: var(--accent-glow);
         }
         
-        /* Current Projects Section - New Addition */
-        #current-projects {
+        /* NEW: Currently Working On Section - The Dashboard Layout */
+        #currently-working {
             background: var(--white);
         }
         
-        .current-projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 1.5rem;
-            max-width: 800px;
+        .current-project-container {
+            max-width: 1100px;
             margin: 0 auto;
-        }
-        
-        .current-project-card {
-            background: var(--white);
+            background: var(--cloud);
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-subtle);
-            transition: all var(--transition-smooth);
             border: 2px solid var(--accent-primary);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .current-project-card:hover {
-            transform: translateY(-5px);
             box-shadow: var(--shadow-strong);
         }
         
-        .current-project-visual {
-            height: 350px;
-            position: relative;
-            background: var(--slate);
+        .current-project-header {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-light));
+            padding: 1.5rem 2rem;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-
-        /* Improved CAD Viewer CSS */
+        
+        .current-project-title-area h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+            font-weight: 800;
+            color: white;
+        }
+        
+        .current-project-meta {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .inprogress-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 999px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .inprogress-dot {
+            width: 8px;
+            height: 8px;
+            background: #fbbf24;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+        
+        .current-project-body {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 0;
+        }
+        
+        /* Improved CAD Viewer CSS inside Dashboard */
+        .cad-viewer-container {
+            background: var(--midnight);
+            min-height: 400px;
+            position: relative;
+            border-right: 1px solid var(--mist);
+        }
+        
         .cad-placeholder {
             width: 100%;
             height: 100%;
@@ -716,6 +761,8 @@
             color: white;
             cursor: pointer;
             transition: background 0.3s;
+            padding: 2rem;
+            text-align: center;
         }
         
         .cad-placeholder:hover {
@@ -744,44 +791,51 @@
             pointer-events: none; /* Let parent handle click */
         }
         
-        .current-project-visual iframe {
+        .cad-viewer-container iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
         
-        .current-project-content {
-            padding: 1.5rem;
+        .project-details {
+            padding: 2rem;
+            background: var(--white);
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
         }
         
-        .current-project-content h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
+        .project-details h4 {
+            font-size: 1.1rem;
             color: var(--text-primary);
+            margin-bottom: 1rem;
             font-weight: 700;
         }
         
-        .current-project-meta {
-            font-size: 0.8rem;
-            color: var(--accent-primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .current-project-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+        .project-details ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
         }
         
-        .current-project-tags {
+        .project-details li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            border-bottom: 1px solid var(--cloud);
+        }
+        
+        .project-details li::before {
+            content: '▸';
+            color: var(--accent-primary);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
@@ -796,11 +850,6 @@
             font-weight: 600;
             font-family: 'Inter', sans-serif;
             transition: all var(--transition-quick);
-        }
-        
-        .current-project-card:hover .tag {
-            background: var(--accent-glow);
-            color: var(--accent-primary);
         }
         
         /* Projects Section */
@@ -887,13 +936,6 @@
         .project-list li {
             margin-bottom: 0.4rem;
             font-size: 0.9rem;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: auto;
         }
         
         .project-card:hover .tag {
@@ -1049,10 +1091,9 @@
             font-size: 0.95rem;
         }
         
-        /* Contact Section - Cinematic Background */
+        /* Contact Section */
         #contact {
             position: relative;
-            /* Dark overlay + Parallax Image */
             background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('dayton_skyline.jpg');
             background-size: cover;
             background-position: center;
@@ -1196,6 +1237,17 @@
             .section-title {
                 font-size: 2rem;
             }
+            
+            /* Dashboard Responsive */
+            .current-project-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .cad-viewer-container {
+                border-right: none;
+                border-bottom: 1px solid var(--mist);
+                min-height: 400px;
+            }
         }
         
         @media (max-width: 640px) {
@@ -1223,6 +1275,7 @@
             
             <ul class="nav-links" id="navLinks">
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#currently-working">Current</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
@@ -1368,18 +1421,30 @@
         </div>
     </section>
 
-    <section id="current-projects">
+    <section id="currently-working">
         <div class="section-container">
             <div class="section-header">
-                <div class="section-label">In Progress</div>
+                <div class="section-label">Active Development</div>
                 <h2 class="section-title">Currently Working On</h2>
                 <p class="section-description">
-                    Ongoing projects where I'm applying my skills in real-time – explore the interactive models below.
+                    My latest engineering project in progress — explore the interactive 3D CAD model
                 </p>
             </div>
-            <div class="current-projects-grid">
-                <div class="current-project-card">
-                    <div class="current-project-visual" id="cadContainer">
+            
+            <div class="current-project-container">
+                <div class="current-project-header">
+                    <div class="current-project-title-area">
+                        <h3>RC Car Chassis Optimization</h3>
+                        <div class="current-project-meta">School Project • 2025-2026</div>
+                    </div>
+                    <div class="inprogress-badge">
+                        <span class="inprogress-dot"></span>
+                        In Progress
+                    </div>
+                </div>
+                
+                <div class="current-project-body">
+                    <div class="cad-viewer-container" id="cadViewer">
                         <div class="cad-placeholder" onclick="loadCadModel(this)">
                             <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/>
@@ -1387,17 +1452,23 @@
                             <button class="cad-load-btn">Load 3D Interactive Model</button>
                         </div>
                     </div>
-                    <div class="current-project-content">
-                        <h3>Advanced RC Car Chassis Optimization</h3>
-                        <div class="current-project-meta">Ongoing • Academic Prototype</div>
-                        <p class="current-project-description">
-                            Iteratively designing and simulating suspension components in SolidWorks. Focus on stress analysis and material selection for improved durability under dynamic loads. Interact with the 3D model to explore design iterations.
-                        </p>
-                        <div class="current-project-tags">
-                            <span class="tag">SolidWorks Simulation</span>
-                            <span class="tag">FEA Analysis</span>
-                            <span class="tag">3D Prototyping</span>
-                            <span class="tag">Vehicle Engineering</span>
+                    
+                    <div class="project-details">
+                        <h4>Project Overview</h4>
+                        <ul>
+                            <li>Leading mechanical design modifications on a 1:10 scale RC car chassis</li>
+                            <li>Designing custom 3D-printed suspension components in SolidWorks</li>
+                            <li>Analyzing suspension geometry for improved traction and handling</li>
+                            <li>Optimizing weight distribution and center of gravity</li>
+                            <li>Testing performance over variable course conditions</li>
+                        </ul>
+                        
+                        <div class="project-tags">
+                            <span class="tag">SolidWorks</span>
+                            <span class="tag">3D Printing</span>
+                            <span class="tag">Vehicle Dynamics</span>
+                            <span class="tag">Suspension Design</span>
+                            <span class="tag">Team Collaboration</span>
                         </div>
                     </div>
                 </div>
@@ -1659,7 +1730,7 @@
             }
         });
 
-        // Function to load CAD Viewer on click (Better performance)
+        // Function to load CAD Viewer on click (Sketchfab Embed)
         function loadCadModel(element) {
             // Replace this URL with your specific Sketchfab model ID when you have it
             // Example: https://sketchfab.com/3d-models/your-model-id
@@ -1679,7 +1750,7 @@
             iframe.src = modelUrl;
             
             // Replace the placeholder with the iframe
-            const container = document.getElementById('cadContainer');
+            const container = document.getElementById('cadViewer');
             container.innerHTML = ''; // Clear placeholder
             container.appendChild(iframe);
         }
@@ -1692,7 +1763,7 @@
                 
                 const target = document.querySelector(href);
                 if (target) {
-                    e.preventDefault(); // Only prevent default if target exists
+                    e.preventDefault(); 
                     const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
                         top: offsetTop,
@@ -1734,11 +1805,8 @@
                 a.classList.remove('active');
                 const href = a.getAttribute('href').substring(1); // remove '#'
                 
-                // Logic: If current is 'current-projects' OR 'projects', highlight 'projects' link
-                if (
-                    href === current || 
-                    (href === 'projects' && current === 'current-projects')
-                ) {
+                // Active State Logic
+                if (href === current) {
                     a.classList.add('active');
                 }
             });
