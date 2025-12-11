@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5191SBH9C"></script> 
     <script> 
@@ -39,7 +40,7 @@
             /* Accent Colors - Royal Blue & Steel */
             --accent-primary: #2563eb; 
             --accent-dark: #1e40af;     
-            --accent-light: #60a5fa;   
+            --accent-light: #60a5fa;    
             --accent-glow: rgba(37, 99, 235, 0.08);
             
             /* Status Colors */
@@ -698,16 +699,55 @@
         }
         
         .current-project-visual {
-            height: 300px;
+            height: 350px;
             position: relative;
-            overflow: hidden;
+            background: var(--slate);
+        }
+
+        /* Improved CAD Viewer CSS */
+        .cad-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--midnight), var(--slate));
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .cad-placeholder:hover {
+            background: linear-gradient(135deg, var(--slate), var(--midnight));
+        }
+
+        .cad-placeholder svg {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            transition: transform 0.3s;
+        }
+
+        .cad-placeholder:hover svg {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .cad-load-btn {
+            background: var(--accent-primary);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            pointer-events: none; /* Let parent handle click */
         }
         
         .current-project-visual iframe {
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
         }
         
         .current-project-content {
@@ -763,8 +803,8 @@
             color: var(--accent-primary);
         }
         
-        /* Projects Section - Renamed to Previous Projects */
-        #previous-projects {
+        /* Projects Section */
+        #projects {
             background: var(--white);
         }
         
@@ -1328,7 +1368,6 @@
         </div>
     </section>
 
-    <!-- New "Currently Working On" Section -->
     <section id="current-projects">
         <div class="section-container">
             <div class="section-header">
@@ -1340,9 +1379,13 @@
             </div>
             <div class="current-projects-grid">
                 <div class="current-project-card">
-                    <div class="current-project-visual">
-                        <!-- Interactive CAD Viewer via Sketchfab Embed - Replace with your actual model ID -->
-                        <iframe title="RC Car Chassis Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/3d-models/YOUR_MODEL_ID?autostart=1&preload=1"></iframe>
+                    <div class="current-project-visual" id="cadContainer">
+                        <div class="cad-placeholder" onclick="loadCadModel(this)">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z"/>
+                            </svg>
+                            <button class="cad-load-btn">Load 3D Interactive Model</button>
+                        </div>
                     </div>
                     <div class="current-project-content">
                         <h3>Advanced RC Car Chassis Optimization</h3>
@@ -1362,8 +1405,7 @@
         </div>
     </section>
 
-    <!-- Renamed "Previous Projects" Section (formerly #projects) -->
-    <section id="previous-projects">
+    <section id="projects">
         <div class="section-container">
             <div class="section-header">
                 <div class="section-label">Featured Work</div>
@@ -1375,7 +1417,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-visual">
-                        <img src="rc-car.png.png" alt="RC Car Chassis" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="rc-car.png.png" alt="RC Car Chassis" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>RC Car Engineering Optimization</h3>
@@ -1396,7 +1438,7 @@
 
                 <div class="project-card">
                     <div class="project-visual">
-                         <img src="chain-lock.jpg.png" alt="Chain Lock CAD Design" style="width: 100%; height: 100%; object-fit: cover;">
+                         <img src="chain-lock.jpg.png" alt="Chain Lock CAD Design" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>Chain Lock Slider Replacement</h3>
@@ -1417,7 +1459,7 @@
 
                 <div class="project-card">
                     <div class="project-visual">
-                         <img src="pool-pump.jpg" alt="Pool Systems Maintenance" style="width: 100%; height: 100%; object-fit: cover;">
+                         <img src="pool-pump.jpg" alt="Pool Systems Maintenance" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>Pool Systems Maintenance</h3>
@@ -1616,16 +1658,41 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        // Function to load CAD Viewer on click (Better performance)
+        function loadCadModel(element) {
+            // Replace this URL with your specific Sketchfab model ID when you have it
+            // Example: https://sketchfab.com/3d-models/your-model-id
+            const modelUrl = "https://sketchfab.com/3d-models/YOUR_MODEL_ID?autostart=1&preload=1";
+            
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('title', 'RC Car Chassis Model');
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.setAttribute('mozallowfullscreen', 'true');
+            iframe.setAttribute('webkitallowfullscreen', 'true');
+            iframe.setAttribute('allow', 'autoplay; fullscreen; xr-spatial-tracking');
+            iframe.setAttribute('xr-spatial-tracking', '');
+            iframe.setAttribute('execution-while-out-of-viewport', '');
+            iframe.setAttribute('execution-while-not-rendered', '');
+            iframe.setAttribute('web-share', '');
+            iframe.src = modelUrl;
+            
+            // Replace the placeholder with the iframe
+            const container = document.getElementById('cadContainer');
+            container.innerHTML = ''; // Clear placeholder
+            container.appendChild(iframe);
+        }
         
-        // Smooth scroll for anchor links
+        // Smooth scroll (Native JS fallback if CSS fails)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href === '#' || href === '#home') return;
                 
-                e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
+                    e.preventDefault(); // Only prevent default if target exists
                     const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
                         top: offsetTop,
@@ -1635,7 +1702,7 @@
             });
         });
 
-        // Scroll Spy Logic
+        // Improved Scroll Spy Logic
         const sections = document.querySelectorAll('section');
         const navMenuItems = document.querySelectorAll('.nav-links a');
 
@@ -1645,35 +1712,34 @@
             const windowHeight = window.innerHeight;
             const bodyHeight = document.body.offsetHeight;
 
-            // 1. Handle Bottom of Page (Contact) specifically
-            // If we are within 50px of the bottom, force the last item
+            // 1. Handle Bottom of Page (Contact)
             if ((windowHeight + scrollPosition) >= (bodyHeight - 50)) {
                 current = 'contact';
             } else {
                 // 2. Standard Scroll Spy
-                // We want the trigger line to be about 30-40% down the screen, not at the very top
-                // This fixes "About detecting late" - it will detect as soon as it enters the "eye level"
                 const triggerLine = scrollPosition + (windowHeight * 0.35);
 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionHeight = section.clientHeight;
+                    const sectionId = section.getAttribute('id');
                     
-                    // If the trigger line is below the start of the section 
-                    // AND the trigger line is above the end of the section
                     if (triggerLine >= sectionTop && triggerLine < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
+                        current = sectionId;
                     }
                 });
             }
 
             navMenuItems.forEach(a => {
                 a.classList.remove('active');
-                if (a.getAttribute('href').includes(current)) {
-                    // Only add active class if we have a valid current section
-                    if(current !== '') {
-                        a.classList.add('active');
-                    }
+                const href = a.getAttribute('href').substring(1); // remove '#'
+                
+                // Logic: If current is 'current-projects' OR 'projects', highlight 'projects' link
+                if (
+                    href === current || 
+                    (href === 'projects' && current === 'current-projects')
+                ) {
+                    a.classList.add('active');
                 }
             });
         });
