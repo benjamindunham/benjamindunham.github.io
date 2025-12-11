@@ -38,7 +38,7 @@
             
             /* Accent Colors - Royal Blue & Steel */
             --accent-primary: #2563eb; 
-            --accent-dark: #1e40af;    
+            --accent-dark: #1e40af;     
             --accent-light: #60a5fa;   
             --accent-glow: rgba(37, 99, 235, 0.08);
             
@@ -668,7 +668,106 @@
             background: var(--accent-glow);
         }
         
-        /* Projects Section */
+        /* Current Projects Section - New Addition */
+        #current-projects {
+            background: var(--white);
+        }
+        
+        .current-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .current-project-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+            transition: all var(--transition-smooth);
+            border: 2px solid var(--accent-primary);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .current-project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+        
+        .current-project-visual {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .current-project-visual iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+        
+        .current-project-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .current-project-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        
+        .current-project-meta {
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .current-project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .current-project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            padding: 0.25rem 0.65rem;
+            background: var(--mist);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: all var(--transition-quick);
+        }
+        
+        .current-project-card:hover .tag {
+            background: var(--accent-glow);
+            color: var(--accent-primary);
+        }
+        
+        /* Projects Section - Renamed to Previous Projects */
+        #previous-projects {
+            background: var(--white);
+        }
+        
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -755,17 +854,6 @@
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: auto;
-        }
-        
-        .tag {
-            padding: 0.25rem 0.65rem;
-            background: var(--mist);
-            color: var(--text-secondary);
-            border-radius: var(--radius-sm);
-            font-size: 0.75rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            transition: all var(--transition-quick);
         }
         
         .project-card:hover .tag {
@@ -1122,7 +1210,7 @@
                     <span class="highlight">Practical Application</span>
                 </h1>
                 <p class="hero-description">
-                    I’m Ben Dunham, a Mechanical Engineering Technology student at Sinclair Community College with a 4.0 GPA and a drive to learn and solve problems. 
+                    I'm Ben Dunham, a Mechanical Engineering Technology student at Sinclair Community College with a 4.0 GPA and a drive to learn and solve problems. 
                     <br><br>
                     My passion lies in understanding how things work, taking them apart, and making them better. From reverse-engineering broken parts to mastering SolidWorks, I am a rapid learner who combines academic excellence with hands-on engineering skills.
                 </p>
@@ -1240,11 +1328,46 @@
         </div>
     </section>
 
-    <section id="projects">
+    <!-- New "Currently Working On" Section -->
+    <section id="current-projects">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">In Progress</div>
+                <h2 class="section-title">Currently Working On</h2>
+                <p class="section-description">
+                    Ongoing projects where I'm applying my skills in real-time – explore the interactive models below.
+                </p>
+            </div>
+            <div class="current-projects-grid">
+                <div class="current-project-card">
+                    <div class="current-project-visual">
+                        <!-- Interactive CAD Viewer via Sketchfab Embed - Replace with your actual model ID -->
+                        <iframe title="RC Car Chassis Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/3d-models/YOUR_MODEL_ID?autostart=1&preload=1"></iframe>
+                    </div>
+                    <div class="current-project-content">
+                        <h3>Advanced RC Car Chassis Optimization</h3>
+                        <div class="current-project-meta">Ongoing • Academic Prototype</div>
+                        <p class="current-project-description">
+                            Iteratively designing and simulating suspension components in SolidWorks. Focus on stress analysis and material selection for improved durability under dynamic loads. Interact with the 3D model to explore design iterations.
+                        </p>
+                        <div class="current-project-tags">
+                            <span class="tag">SolidWorks Simulation</span>
+                            <span class="tag">FEA Analysis</span>
+                            <span class="tag">3D Prototyping</span>
+                            <span class="tag">Vehicle Engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Renamed "Previous Projects" Section (formerly #projects) -->
+    <section id="previous-projects">
         <div class="section-container">
             <div class="section-header">
                 <div class="section-label">Featured Work</div>
-                <h2 class="section-title">Projects</h2>
+                <h2 class="section-title">Previous Projects</h2>
                 <p class="section-description">
                     These are some projects that I've worked on. A variety of personal, academic, and job-focused
                 </p>
