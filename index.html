@@ -424,10 +424,10 @@
         }
         
         .profile-card {
-            width: 480px; /* INCREASED from 380px to make entire card bigger */
+            width: 600px; /* INCREASED from 480px to 600px */
             background: var(--white);
             border-radius: 20px;
-            padding: 3rem 2rem;
+            padding: 4rem 3rem; /* INCREASED padding */
             box-shadow: 
                 0 0 0 1px rgba(0,0,0,0.03),
                 0 20px 40px -10px rgba(0,0,0,0.1); 
@@ -457,8 +457,8 @@
         }
         
         .profile-image {
-            width: 280px; /* INCREASED from 220px to make picture bigger */
-            height: 280px; /* INCREASED from 220px */
+            width: 350px; /* INCREASED from 280px to 350px */
+            height: 350px; /* INCREASED from 280px to 350px */
             border-radius: 50%;
             background: var(--cloud);
             outline: 4px solid var(--white);
@@ -486,7 +486,7 @@
         }
         
         .profile-info h3 {
-            font-size: 2rem; /* INCREASED from 1.75rem to match card size */
+            font-size: 2.5rem; /* INCREASED from 2rem to match large card */
             margin-bottom: 0.25rem;
             color: var(--text-primary);
             font-weight: 800;
@@ -495,7 +495,7 @@
         
         .profile-info p {
             color: var(--text-secondary);
-            font-size: 1.1rem; /* INCREASED slightly */
+            font-size: 1.25rem; /* INCREASED from 1.1rem */
             margin-bottom: 1.5rem;
         }
         
@@ -504,11 +504,11 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.25rem; /* Increased padding slightly */
             background: var(--success-bg);
             border-radius: 999px;
             color: var(--success-text);
-            font-size: 0.9rem; /* INCREASED slightly */
+            font-size: 1rem; /* INCREASED from 0.9rem */
             font-weight: 600;
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
@@ -1264,14 +1264,20 @@
                 font-size: 2rem;
             }
             
+            /* Ensure large card scales down on mobile */
             .profile-card {
                 width: 100%;
                 max-width: 360px;
+                padding: 2rem;
             }
 
             .profile-image {
                 width: 180px;
                 height: 180px;
+            }
+            
+            .profile-info h3 {
+                font-size: 1.75rem;
             }
         }
     </style>
