@@ -39,7 +39,7 @@
             
             /* Accent Colors - Royal Blue & Steel */
             --accent-primary: #2563eb; 
-            --accent-dark: #1e40af;     
+            --accent-dark: #1e40af;      
             --accent-light: #60a5fa;    
             --accent-glow: rgba(37, 99, 235, 0.08);
             
@@ -424,7 +424,7 @@
         }
         
         .profile-card {
-            width: 360px;
+            width: 380px; /* INCREASED from 360px */
             background: var(--white);
             border-radius: 20px;
             padding: 3rem 2rem;
@@ -456,9 +456,9 @@
             background: linear-gradient(90deg, var(--accent-primary), var(--accent-light));
         }
         
-  .profile-image {
-            width: 180px;
-            height: 180px;
+        .profile-image {
+            width: 220px; /* INCREASED from 180px */
+            height: 220px; /* INCREASED from 180px */
             border-radius: 50%;
             background: var(--cloud);
             outline: 4px solid var(--white);
@@ -1270,6 +1270,12 @@
                 width: 100%;
                 max-width: 300px;
             }
+
+            /* Added to prevent the big image from breaking mobile layout */
+            .profile-image {
+                width: 170px;
+                height: 170px;
+            }
         }
     </style>
 </head>
@@ -1315,7 +1321,7 @@
                     My passion lies in understanding how things work, taking them apart, and making them better. From reverse-engineering broken parts to mastering SolidWorks, I am a rapid learner who combines academic excellence with hands-on engineering skills.
                 </p>
                 <div class="hero-stats">
-                     <div class="stat">
+                      <div class="stat">
                         <div class="stat-value">SolidWorks(CAD)</div>
                         <div class="stat-label">Certified</div>
                     </div>
@@ -1493,7 +1499,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-visual">
-                        <img src="rc-car.png.png" alt="RC Car Chassis" loading="lazy">
+                        <img src="rc-car.png" alt="RC Car Chassis" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>RC Car Engineering Optimization</h3>
@@ -1514,7 +1520,7 @@
 
                 <div class="project-card">
                     <div class="project-visual">
-                         <img src="chain-lock.jpg.png" alt="Chain Lock CAD Design" loading="lazy">
+                         <img src="chain-lock.jpg" alt="Chain Lock CAD Design" loading="lazy">
                     </div>
                     <div class="project-content">
                         <h3>Chain Lock Slider Replacement</h3>
@@ -1619,7 +1625,7 @@
             </div>
             <div class="education-grid">
                 <div class="education-card">
-                    <h3><img src="sinclair_logo.jpg.jpg" alt="Sinclair Logo" class="edu-logo"> Sinclair Community College</h3>
+                    <h3><img src="sinclair_logo.jpg" alt="Sinclair Logo" class="edu-logo"> Sinclair Community College</h3>
                     <div class="education-degree">Associate of Applied Science in Mechanical Engineering</div>
                     <div class="education-date">Expected May 2026 | Dayton, OH</div>
                     <div class="education-details">
